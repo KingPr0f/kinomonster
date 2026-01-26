@@ -1,0 +1,33 @@
+.card {
+  width: 110px;
+  min-width: 110px; // Важно, чтобы флекс не сплющил карточку
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  background: #1a1a1b;
+}
+
+.name {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.character {
+  font-size: 11px;
+  color: #828282;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

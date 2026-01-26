@@ -1,0 +1,58 @@
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 350px; // Ограничиваем ширину поиска в хедере
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    max-width: 200px; // Сужаем на планшетах
+  }
+}
+
+.input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05); // Полупрозрачный фон
+  border: 1px solid rgba(255, 255, 255, 0.1); // Едва заметная рамка
+  border-radius: 25px; // Закругленные края (pill-shape)
+  padding: 10px 15px 10px 45px; // Большой отступ слева под иконку
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s ease; // Плавная анимация при клике
+
+  &::placeholder {
+    color: #828282; // Серый цвет подсказки
+    transition: opacity 0.3s ease;
+  }
+
+  &:focus {
+    background: rgba(255, 255, 255, 0.1); // Становится чуть светлее
+    border-color: var(--color-primary); // Розовая рамка при фокусе
+    box-shadow: 0 0 15px rgba(255, 52, 101, 0.2); // Мягкое розовое свечение
+
+    &::placeholder {
+      opacity: 0.5; // Скрываем плейсхолдер при наборе
+    }
+  }
+}
+
+.icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #828282;
+  pointer-events: none; // Чтобы клик проходил сквозь иконку в инпут
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+// Изменяем цвет иконки, когда инпут в фокусе
+.input:focus + .icon {
+  color: var(--color-primary);
+}

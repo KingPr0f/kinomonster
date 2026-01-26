@@ -1,0 +1,121 @@
+@use "sass:color";
+
+.hero {
+  width: 100%;          /* На всю ширину браузера */
+  height: 80vh;         /* 80% от высоты экрана (выглядит эффектнее) */
+  min-height: 600px;    /* Но не меньше 600px */
+  background-size: cover;    /* Картинка заполняет всё */
+  background-position: center top; /* Центрируем, приоритет верху */
+  background-repeat: no-repeat;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  /* Градиент: слева темный (чтобы читать текст), справа прозрачный (чтобы видеть героя) */
+  background: linear-gradient(90deg, #0D0D0E 0%, rgba(13, 13, 14, 0.8) 40%, rgba(13, 13, 14, 0.2) 100%);
+  
+  /* Градиент снизу вверх, чтобы плавный переход в контент */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #0D0D0E, transparent);
+  }
+}
+
+.content {
+  /* Центрируем контент */
+  max-width: var(--container-width); /* 1200px */
+  margin: 0 auto;
+  padding: 0 20px;
+  
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Текст по вертикали по центру */
+  position: relative;
+  z-index: 2; /* Чтобы текст был над градиентом */
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+
+.title {
+  font-size: 64px; /* Делаем заголовок крупнее */
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  max-width: 700px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.meta {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 25px;
+  font-size: 16px;
+  color: #ccc;
+}
+
+.rating {
+  color: #000;
+  background: #f5c518;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.description {
+  color: #bbb;
+  max-width: 600px;
+  margin-bottom: 40px;
+  font-size: 18px;
+  line-height: 1.6;
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: white;
+  padding: 16px 40px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  transition: 0.3s;
+  box-shadow: 0 10px 30px rgba(255, 52, 101, 0.3);
+  
+  &:hover {
+    background: color.adjust(#FF3465, $lightness: 5%);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(255, 52, 101, 0.5);
+  }
+}
+
+.skeleton {
+  width: 100%;
+  height: 80vh;
+  background: #121212;
+}

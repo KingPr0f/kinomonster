@@ -1,0 +1,13 @@
+.grid {
+  display: grid;
+  // Адаптивная сетка: автозаполнение
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+  padding: 20px 0;
+}
+
+.center {
+  text-align: center;
+  padding: 50px;
+  font-size: 20px;
+}

@@ -1,0 +1,81 @@
+@use "sass:color";
+
+.page {
+  min-height: 100vh;
+  padding-top: 120px; // Отступ под фиксированную шапку
+  padding-bottom: 60px;
+  background-color: #0D0D0E;
+}
+
+.container {
+  max-width: var(--container-width); // 1200px
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 50px;
+  flex-wrap: wrap; // Чтобы на мобилках селекты переносились
+}
+
+.select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 25px;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 160px;
+  transition: 0.3s;
+
+  &:hover {
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px rgba(255, 52, 101, 0.2);
+  }
+
+  option {
+    background: #1a1a1b;
+    color: #fff;
+  }
+}
+
+.grid {
+  display: grid;
+  // Сетка по 5 карточек на больших экранах
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+
+  // Адаптив под разные экраны
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 650px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.status {
+  text-align: center;
+  padding: 100px 0;
+  font-size: 20px;
+  color: #828282;
+}

@@ -1,0 +1,62 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s ease;
+
+  text-decoration: none; // Убираем подчеркивание
+  color: white;          // Цвет текста всегда белый (наследуется)
+
+  &:hover {
+    transform: scale(1.02);
+    .title { color: var(--color-primary); }
+  }
+}
+
+.posterWrapper {
+  position: relative;
+  aspect-ratio: 2 / 3; // Строгие пропорции как в Фигме
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #1a1a1b; // Фон пока грузится картинка
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; // Картинка заполнит всё пространство без искажений
+}
+
+.rating {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #f5c518; // Желтый цвет как у Кинопоиска/IMDb
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.title {
+  font-size: 14px;
+  margin: 0;
+  
+  // Для обрезки текста по количеству строк:
+  display: -webkit-box;           // Всё еще нужно для совместимости
+  -webkit-line-clamp: 2;          // Старый стандарт (WebKit)
+  -webkit-box-orient: vertical;   // Всё еще нужно
+  
+  // ДОБАВЬ ЭТУ СТРОКУ (Стандарт):
+  line-clamp: 2;                  
+  
+  overflow: hidden;
+  text-overflow: ellipsis;        // Хорошим тоном считается добавить троеточие
+}
+
+.year {
+  font-size: 12px;
+  color: var(--color-text-gray);
+  margin: 0;
+}

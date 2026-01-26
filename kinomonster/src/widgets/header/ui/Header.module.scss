@@ -1,0 +1,64 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(13, 13, 14, 0.9); // Полупрозрачный фон
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container {
+  max-width: var(--container-width); // 1200px из variables.scss
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--color-primary); // Розовый
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+  
+  a {
+    color: var(--color-text);
+    font-size: 14px;
+    opacity: 0.8;
+    transition: 0.2s;
+    
+    &:hover {
+      opacity: 1;
+      color: var(--color-primary);
+    }
+  }
+}
+
+.search {
+  input {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    color: white;
+    outline: none;
+    width: 200px;
+    
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    &:focus {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}

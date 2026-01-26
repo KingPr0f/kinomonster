@@ -1,0 +1,36 @@
+.page {
+  min-height: 100vh;
+  padding-top: 120px; // Важно! Чтобы контент не был под шапкой
+  background: #0D0D0E;
+  padding-bottom: 50px;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 40px;
+  
+  span {
+    color: var(--color-primary); // Подсвечиваем поисковое слово розовым
+    font-style: italic;
+  }
+}
+
+.grid {
+  display: grid;
+  // Сетка карточек
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+.status {
+  text-align: center;
+  padding: 100px 0;
+  font-size: 20px;
+  color: #828282;
+}

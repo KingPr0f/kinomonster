@@ -1,0 +1,201 @@
+@use "sass:color";
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 120px;
+  background: #0D0D0E;
+  color: #fff;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 700px;
+  background-size: cover;
+  background-position: center 20%;
+  z-index: 0;
+  opacity: 0.3;
+  // Плавное исчезновение фона книзу
+  mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, #0D0D0E);
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.contentWrapper {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start; // Выравнивает постер и текст по одной линии верха
+  margin-bottom: 80px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.poster {
+  flex-shrink: 0;
+  width: 340px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+
+.info {
+  flex: 1;
+  padding-top: 0; // Убираем отступы, чтобы текст не был ниже постера
+}
+
+.title {
+  font-size: 56px;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  line-height: 1.1;
+}
+
+.originalTitle {
+  font-size: 20px;
+  color: #828282;
+  margin-bottom: 25px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+.ratingBadge {
+  background: #f5c518;
+  color: #000;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-weight: 800;
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.genreTag {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #ddd;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.detailItem {
+  display: flex;
+  gap: 15px;
+  font-size: 16px;
+}
+
+.detailLabel {
+  color: #828282;
+  min-width: 100px;
+}
+
+.detailValue {
+  color: #fff;
+  font-weight: 500;
+}
+
+.subtitle {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 40px;
+  max-width: 800px;
+}
+
+.watchBtn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 16px 50px;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:hover {
+    background: color.adjust(#FF3465, $lightness: 5%);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 52, 101, 0.4);
+  }
+}
+
+.section {
+  margin-top: 80px;
+}
+
+.actorsList {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  width: 100%;
+  
+  // Кастомный скроллбар (розовый)
+  &::-webkit-scrollbar { height: 5px; }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 52, 101, 0.4);
+    border-radius: 10px;
+  }
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.loading {
+  text-align: center;
+  padding-top: 200px;
+  font-size: 24px;
+}
