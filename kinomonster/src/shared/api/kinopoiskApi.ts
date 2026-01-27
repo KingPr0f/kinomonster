@@ -35,6 +35,12 @@ export interface IResponse {
   total_pages: number;
 }
 
+
+/**
+ * API Slice.
+ * Вся работа с сетью инкапсулирована здесь.
+ * Компоненты UI не должны знать про axios/fetch, они просто используют хуки.
+ */
 export const kinopoiskApi = createApi({
   reducerPath: 'kinopoiskApi',
   baseQuery: fetchBaseQuery({
@@ -44,7 +50,7 @@ export const kinopoiskApi = createApi({
     getMovies: builder.query<IResponse, { page?: number }>({
       query: ({ page = 1 }) => ({
         url: '/movie/popular',
-        params: { api_key: import.meta.env.VITE_API_KEY, language: 'ru-RU', page },
+        params: { api_key: import.meta.env.VITE_API_KEY, language: 'ru-RU', page }, // URL из .env файла (безопасность/конфигурация)
       }),
     }),
     getPopularSeries: builder.query<IResponse, { page?: number }>({
