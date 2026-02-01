@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import {  Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useGetGenresQuery, useGetDiscoverMoviesQuery } from '@/shared/api/kinopoiskApi';
 import { MovieCard } from '@/entities/movie/ui/MovieCard/MovieCard';
 import { POPULAR_COUNTRIES } from '@/shared/constants/countries';
+import { RoutePaths } from '@/shared/config/routes'; // Импортируем константы
 import styles from './CategoryMovieList.module.scss';
 
 export const CategoryMovieList = () => {
@@ -35,9 +36,9 @@ export const CategoryMovieList = () => {
           {POPULAR_COUNTRIES.map((c) => <option key={c.code} value={c.code}>{c.name}</option>)}
         </select>
 
-        {/* ПЕРЕМЕСТИЛИ СЮДА */}
+        {/* Используем RoutePaths.DISCOVER */}
         <Link 
-          to={`/discover?genre=${genre}&year=${year}&country=${country}`} 
+          to={`${RoutePaths.DISCOVER}?genre=${genre}&year=${year}&country=${country}`} 
           className={styles.seeAll}
         >
           Смотреть все →

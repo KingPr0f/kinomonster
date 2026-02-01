@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import type { IMovie } from '../../../../shared/api/kinopoiskApi';
+import type { IMovie } from '@/shared/api/kinopoiskApi'; // Путь может отличаться
+import { RoutePaths } from '@/shared/config/routes';
 import styles from './MovieCard.module.scss';
 
 interface MovieCardProps {
@@ -7,32 +8,16 @@ interface MovieCardProps {
 }
 
 export const MovieCard = ({ movie }: MovieCardProps) => {
-  const imageBase = 'https://image.tmdb.org/t/p/w500';
-
-  // Fallback pattern: Если poster_path null, показываем заглушку (placeholder)
-  const imageUrl = movie.poster_path 
-    ? `${imageBase}${movie.poster_path}` 
-    : 'https://placehold.co/400x600/1a1a1b/ffffff?text=No+Poster';
-
-  // Нормализация данных: API может возвращать title (фильм) или name (сериал).
-  // Карточка должна быть универсальной.
-  const title = movie.title || movie.name || movie.original_title || movie.original_name;
-  const date = movie.release_date || movie.first_air_date || '';
-  const year = date ? date.split('-')[0] : '';
-  
-  const rating = movie.vote_average ? movie.vote_average.toFixed(1) : null;
-
+  // Логики больше нет! Она вся в transformResponse
   return (
-    <Link to={`/movie/${movie.id}`} className={styles.card}>
+    <Link to={`${RoutePaths.MOVIE_DETAILS}/${movie.id}`} className={styles.card}>
       <div className={styles.posterWrapper}>
-        <img src={imageUrl} alt={title} className={styles.image} />
-        {/* Условный рендеринг рейтинга */}
-        {rating && rating !== "0.0" && <span className={styles.rating}>{rating}</span>}
+        <img src={movie.posterUrl} alt={movie.title} className={styles.image} />
+        {movie.rating !== "0.0" && <span className={styles.rating}>{movie.rating}</span>}
       </div>
       <div className={styles.info}>
-         {/* CSS line-clamp используется в стилях, чтобы обрезать длинные названия */}
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.year}>{year}</p>
+        <h3 className={styles.title}>{movie.title}</h3>
+        <p className={styles.year}>{movie.year}</p>
       </div>
     </Link>
   );
